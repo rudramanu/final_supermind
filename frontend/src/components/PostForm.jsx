@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
+const BASE_URL = "http://3.6.39.101:9800";
+const url = `${BASE_URL}/post/posts`;
 export default function PostForm({ create }) {
   const [post, setPost] = useState({
     title: "",
@@ -8,10 +10,26 @@ export default function PostForm({ create }) {
     photo: `https://picsum.photos/200/300?random=${Math.random(1, 11)}`,
   });
 
-  function addNewPost(event) {
+  async function addNewPost(event) {
     event.preventDefault();
     const newPost = { ...post, id: Date.now() };
     create(newPost);
+    //=============
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newPost),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+
+    alert("Blog added successfully");
+    //===============
     setPost({
       title: "",
       body: "",
