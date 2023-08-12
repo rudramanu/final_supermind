@@ -101,18 +101,11 @@ export default class PostService {
 
     return postsResponse;
   }
-
-  static async getById(id) {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts/" + id
-    );
-    return response;
-  }
-
-  static async getCommentsByPostId(id) {
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${id}/comments`
-    );
-    return response;
-  }
+  // async getCommentsByPostId(id) {
+  //   const response = await axios.get(
+  //     `http://3.6.39.101:9800/comment/posts/${id}`
+  //   );
+  //   const data = await response.json();
+  //   return data;
+  // }
 }

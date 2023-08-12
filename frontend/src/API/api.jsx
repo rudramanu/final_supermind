@@ -1,5 +1,5 @@
 // const BASE_URL = "http://localhost:9800";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 const BASE_URL = "http://3.6.39.101:9800";
 export const signup = async (name, email, password) => {
   const url = `${BASE_URL}/user/signup`;
@@ -25,7 +25,9 @@ export const signup = async (name, email, password) => {
 
     const user = await response.json();
     alert("Signed up successfully");
-    window.location.href = "login";
+    window.location.href = "/login";
+    // const navigate = useNavigate();
+    // navigate("login");
     return user;
   } catch (error) {
     throw new Error("Signup failed: " + error.message);
@@ -59,7 +61,9 @@ export const login = async (email, password) => {
     sessionStorage.setItem("name", user.name);
     if (user) {
       alert("Logged in successfully");
-      window.location.href = "posts";
+      window.location.href = "/posts";
+      // const navigate = useNavigate();
+      // navigate("posts");
     } else {
       alert("Please enter valid credentials");
     }

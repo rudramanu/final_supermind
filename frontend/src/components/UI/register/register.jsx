@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { signup } from "../../../API/api";
+
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const Register = () => {
     try {
       const user = await signup(name, email, password);
       console.log("Signed up user:", user);
+
       // Handle successful signup here (e.g., redirect to dashboard)
     } catch (error) {
       console.error("Signup failed:", error.message);
