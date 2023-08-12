@@ -1,3 +1,4 @@
+import PostItem from "../components/PostItem";
 import Login from "../components/UI/login/login";
 import Register from "../components/UI/register/register";
 import About from "../pages/About";

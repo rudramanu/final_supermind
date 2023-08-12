@@ -1,4 +1,5 @@
 // const BASE_URL = "http://localhost:9800";
+import { useNavigate } from "react-router-dom";
 const BASE_URL = "http://3.6.39.101:9800";
 export const signup = async (name, email, password) => {
   const url = `${BASE_URL}/user/signup`;
@@ -58,7 +59,7 @@ export const login = async (email, password) => {
     sessionStorage.setItem("name", user.name);
     if (user) {
       alert("Logged in successfully");
-      window.location.href = "blogs";
+      window.location.href = "posts";
     } else {
       alert("Please enter valid credentials");
     }

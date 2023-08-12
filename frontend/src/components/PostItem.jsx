@@ -1,9 +1,27 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
 import { useNavigate } from "react-router-dom";
+const BASE_URL = "http://3.6.39.101:9800";
 
 export default function PostItem(props) {
   const router = useNavigate();
+  console.log(props.post);
+  //======================
+  const detelePost = async () => {
+    const response = await fetch(`${BASE_URL}/post/delete/${props.post.id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: sessionStorage.getItem("token"),
+        "Content-type": "application/json",
+      },
+    });
+    alert("Post deleted");
+  };
+  async function deleteP() {
+    props.remove(props.post);
+    detelePost();
+  }
+
   return (
     <div className="post">
       <div className="post__content">
@@ -22,10 +40,7 @@ export default function PostItem(props) {
             >
               Open
             </MyButton>
-            <MyButton
-              onClick={() => props.remove(props.post)}
-              className="post__button"
-            >
+            <MyButton onClick={deleteP} className="post__button">
               Delete
             </MyButton>
           </div>
