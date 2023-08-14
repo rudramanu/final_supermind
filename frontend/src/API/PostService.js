@@ -101,11 +101,11 @@ export default class PostService {
 
     return postsResponse;
   }
-  // async getCommentsByPostId(id) {
-  //   const response = await axios.get(
-  //     `http://3.6.39.101:9800/comment/posts/${id}`
-  //   );
-  //   const data = await response.json();
-  //   return data;
-  // }
+  async getCommentsByPostId(id) {
+    const response = await axios.get(
+      `http://3.6.39.101:9800/comment/posts/${id}`
+    );
+    const data = await response.json();
+    return data;
+  }
 }
